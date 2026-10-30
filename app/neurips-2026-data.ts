@@ -1,0 +1,471 @@
+import type { ConferencePaper } from "./conference-data";
+
+export const neurips2026Papers: ConferencePaper[] = [
+  {
+    "id": "neurips-2026-149712",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "MIRAGE: Adaptive Multimodal Gating for Whole-Brain fMRI Encoding",
+    "authors": "Abdulkadir Gokce, Badr AlKhamissi, Martin Schrimpf",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/149712",
+    "tags": [
+      "fMRI",
+      "多模态编码",
+      "自然电影",
+      "层级聚合"
+    ],
+    "introZh": "从同一个多模态基础模型中自适应选取视觉、听觉与语言层级特征，预测自然电影下的全脑 fMRI。",
+    "abstractZh": "任务优化神经网络的进展，使编码模型成为预测自然刺激所诱发脑响应的有力工具，但现有方法大多依赖单模态表征。全模态基础模型与丰富多模态神经数据集的出现，使跨被试联合整合视觉、听觉和语言信息的共享编码模型成为可能。我们提出 MIRAGE，一种预测带有配对转录文本的自然视听刺激所诱发全脑 fMRI 响应的脑编码框架。MIRAGE 通过三个模态特异的交叉注意力模块，从单个预训练全模态主干中提取表征；模块的潜在查询自适应聚合主干 48 层的特征，再通过基于 Transformer 的脑编码器和皮层分区上的被试特异线性头进行组合。在 Algonauts 基准的分布外数据集上，MIRAGE 取得最先进结果。受控比较表明，在不同架构层级和主干中，原生多模态融合，即从同一个联合训练模型中提取特征，都持续优于对独立提取的单模态流进行事后融合。除预测准确率外，学习到的注意力权重可直接检查：各模态门控模块发现不同的主干深度分布，各模态也在皮层上呈现不同、具有解剖结构的模式。这些结果表明，对原生多模态特征进行自适应逐层聚合，是一种更可泛化、更可解释且更准确的全脑编码方法。",
+    "relevance": "论文事实：在统一多模态主干的 48 层上分别学习模态门控，并比较原生融合与事后融合。研究推断：可将其作为统一 fMRI↔CLIP 模型的编码端参考，检查视觉、声音和文本目标是否需要不同的层级汇聚及被试适配。",
+    "limitation": "这是刺激到 fMRI 的编码模型；注意力的解剖结构不能直接证明因果脑区功能，也没有自动建立 fMRI 到内容生成的能力。",
+    "review": "https://openreview.net/forum?id=o0Kim6sdzg"
+  },
+  {
+    "id": "neurips-2026-154012",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "Mind the Parameters: Lightweight and Efficient Brain Visual Decoding with Shared Tensor Cores",
+    "authors": "Haodong Jing, Panqi Yang, Rongchao Zhang, Junhao Jia, Hoi Leong Lee, Zhipeng Liu, Yongqiang Ma, Nanning Zheng",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/154012",
+    "tags": [
+      "fMRI",
+      "跨被试泛化",
+      "共享与特异表征",
+      "参数高效"
+    ],
+    "introZh": "用共享张量基和被试残差因子区分共性与个体差异，支持新被试零样本解码及少样本适配。",
+    "abstractZh": "连接脑活动与视觉感知的计算表征，是神经科学与机器学习交叉领域的核心目标。然而，fMRI 跨被试解码仍具有挑战，因为不同个体的神经响应差异显著，而现有方法经常依赖被试特异微调或参数量庞大的解码器。这限制了对未见被试的泛化，也妨碍高效部署。我们提出 BrainTC，即 Brain Tensor Cores，一种基于共享张量分解的轻量级跨被试脑视觉解码框架。BrainTC 通过共享张量核心对齐模块，把共享功能结构与被试特异变异分离：该模块利用共享张量基和被试残差因子，将各 ROI 的响应映射到共同功能空间。它既支持未见被试的零样本解码，也支持只更新残差参数的少样本适配。随后，我们开发采用张量化注意力的 Brain Tensor-Transformer，以紧凑地建模 ROI 间依赖，并结合分层神经到视觉映射模块进行多层次视觉预测。实验表明，BrainTC 在显著提高参数效率的同时，取得有竞争力的跨被试解码性能，尤其改善了对未见被试的零样本泛化。",
+    "relevance": "论文事实：共享张量基与被试残差因子承担不同角色，少样本阶段只更新残差参数。研究推断：与共享编码器加低秩被试 adapter 的设想直接对应，可比较共享语义与个体神经映射是否真正分离。",
+    "limitation": "摘要没有列出具体被试数、绝对指标和外部数据集结果；需核对零样本设置是否使用目标被试统计，以及参数量、训练预算和基线是否匹配。",
+    "review": "https://openreview.net/forum?id=Gs4DaL9e6C"
+  },
+  {
+    "id": "neurips-2026-149071",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "MindShape: Superquadric-Constrained High-Fidelity 3D Reconstruction from fMRI",
+    "authors": "Xiaoquan Shen, Ming Li, Jianxiong Gao, Jiaxuan Chen, Xiangru Huang, Yanwei Fu, Gang Pan",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/149071",
+    "tags": [
+      "fMRI",
+      "三维重建",
+      "可控生成",
+      "几何约束"
+    ],
+    "introZh": "把超二次曲面几何作为显式低维约束，与语义描述共同控制 fMRI 条件三维重建。",
+    "abstractZh": "神经解码的近期进展，使从功能磁共振成像（fMRI）信号重建三维视觉内容成为可能，为脑条件三维生成开辟了路径。然而，现有方法主要依赖语义或多视角先验，没有显式建模三维几何约束，因而经常产生结构扭曲并降低几何保真度。为解决这一局限，我们提出 MindShape，一种面向 fMRI 条件三维重建的几何感知神经解码框架。不同于以往方法，MindShape 将超二次曲面几何解码为显式、低维的结构约束，并以几何基元和语义描述共同条件化三维生成过程，从而产生语义一致、几何忠实的重建。实验表明，MindShape 在几何一致性和语义保真度方面优于现有基线。这些结果提示，显式几何基元能够在带噪神经测量与可控三维生成之间提供有效的结构化接口。",
+    "relevance": "论文事实：显式解码几何基元，并与语义描述共同约束三维生成。研究推断：可以借鉴这种语义—结构双通路设计，分别检验反事实编辑中的类别身份、形状和空间布局保持。",
+    "limitation": "摘要未提供具体数据规模和绝对提升；生成器先验可能主导外形，应通过错配 fMRI、几何条件打乱及仅语义基线检验神经证据净贡献。",
+    "review": "https://openreview.net/forum?id=t5aqllPnlD"
+  },
+  {
+    "id": "neurips-2026-152995",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "Direct Conditioning of Audio Diffusion Transformers on fMRI Reveals Cortical Contributions to Sound Reconstruction",
+    "authors": "Matteo Ciferri, Tonio Weidler, Matteo Ferrante, Nicola Toschi, Elia Formisano",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/152995",
+    "tags": [
+      "fMRI",
+      "声音重建",
+      "条件扩散",
+      "脑区贡献"
+    ],
+    "introZh": "直接把连续 fMRI 表征注入音频扩散 Transformer，避免先预测中间语义特征，并分析听觉皮层贡献。",
+    "abstractZh": "从脑活动重建音频仍然具有挑战。一个关键局限是，当前音频扩散模型主要为文本条件设计，缺少接入神经响应等非语言连续信号的机制。尽管视觉领域近期已探索直接以脑活动为条件，但这一方法尚未扩展到音频扩散模型。我们提出一种直接利用 fMRI 信号引导潜在音频扩散模型的框架，在条件化阶段避免中间特征预测。方法的核心是一个与 Transformer 兼容的适配器，使非语言表征能够整合进扩散 Transformer（DiT）的交叉注意力层。尽管其动机来自神经解码，这一适配器提供了以任意连续输入条件化音频扩散模型的通用机制，并不局限于神经信号。我们在声学与语义评价指标上，均展示了相较基线的持续改善，基线包括两阶段 fMRI 到潜在条件的方法。此外，我们引入以听觉神经加工计算模型为基础的保真度指标，从而量化不同听觉皮层区域对重建音频表征的贡献。",
+    "relevance": "论文事实：连续脑表征直接进入 DiT 交叉注意力，并以神经加工模型评价皮层贡献。研究推断：对统一脑条件生成器，可比较直接条件化与先投影 CLIP 的信息损失，并把 ROI 移除与生成质量变化连接起来。",
+    "limitation": "基于编码模型的保真度仍是代理评价；脑区条件移除不等同真实神经干预，且需要防范扩散先验产生与刺激类别相符但细节失真的音频。",
+    "review": "https://openreview.net/forum?id=OlCa72ym7P"
+  },
+  {
+    "id": "neurips-2026-154738",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "Boosting Brain-to-Image Decoding with TRIBE v2 Data Augmentation",
+    "authors": "Yohann Benchetrit, Marlene Careil, Simon Dahan, Hubert Banville, Stéphane d'Ascoli, Jean-Remi King",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/154738",
+    "tags": [
+      "fMRI",
+      "图像检索",
+      "合成神经数据",
+      "数据效率"
+    ],
+    "introZh": "用 TRIBE v2 生成合成 fMRI 扩充训练集，系统检查真实与合成数据比例对脑到图像解码的影响。",
+    "abstractZh": "脑解码受到带标签神经数据可获得性的限制，在低数据条件下尤其困难。为解决这一问题，我们研究：利用预训练刺激到 fMRI 响应模型产生的合成数据扩充小型 fMRI 数据集，能否以及何时改善脑解码。我们使用 TRIBE v2，它是一个在超过 1,000 小时视频、音频与语言所诱发 fMRI 响应上预训练的大型编码模型。对每个数据集，我们系统评估不同设置，展示图像解码器的性能如何随训练中合成数据量变化。基于两个数据集，即 7T fMRI Natural Scenes Dataset 和 3T fMRI BOLD5000，结果显示，相较只用真实数据训练的解码器，Top-10 图像检索准确率最高改善 68%。重要的是，达到给定图像解码性能所需的增强数据比例，需要依数据来源进行调整。出乎意料的是，完全在合成 fMRI 上训练的图像解码器在部分设置中仍高于机会水平，提示 TRIBE v2 可支持零样本 fMRI 到图像解码。这些结果表明，大规模视听与语言 fMRI 响应模型能够为提高图像解码的数据效率提供基础。",
+    "relevance": "论文事实：在 NSD 和 BOLD5000 上扫描真实／合成数据比例，报告最高 68% 的 Top-10 检索改善。研究推断：可先用 image→fMRI 编码器扩充训练，再在冻结真实验证集上测试 fMRI→CLIP；必须将编码器训练来源与最终测试刺激去重。",
+    "limitation": "最高改善为特定设置下的相对结果，不能当作普遍收益。合成数据可能重复教师偏差；仅合成训练高于机会并不等于开放域重建或任意新被试可靠泛化。",
+    "review": "https://openreview.net/forum?id=BOKCoQkBKJ"
+  },
+  {
+    "id": "neurips-2026-152414",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "Cortically-Resolved Recurrent Architecture for fMRI",
+    "authors": "Da-Woon Heo, Kwanseok Oh, Adrián Ayuso-Muñoz, Heung-Il Suk",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/152414",
+    "tags": [
+      "fMRI",
+      "脑区时间尺度",
+      "循环架构",
+      "表征解释"
+    ],
+    "introZh": "让每个皮层 ROI 拥有私有时间缓冲和可学习积分窗，用显式结构研究脑区时序差异。",
+    "abstractZh": "从功能磁共振成像（fMRI）解码认知功能与脑疾病，是神经科学的一项基础问题；近年来深度学习推动了任务态与静息态场景的发展。现有区域级解码器通过 ROI 感知的图或 Transformer 架构捕捉空间结构，却在所有区域使用统一时间算子，因而没有显式建模不同皮层区域如何在异质时间尺度上整合信息。我们提出 CoRTeX，一种面向 fMRI 的区域分辨循环架构，每个皮层区域拥有独立可学习参数，并按自身学得的时间尺度演化。其核心是每区域可微时间积分窗，通过私有缓冲区上的软掩码，允许各 ROI 学习应向过去整合多长时间的信息。跨区域信息被限制在单个身份感知注意力通道中，并受到共激活驱动记忆的额外偏置；记忆的学习与遗忘速率也各自依赖区域。在任务态 fMRI 的 NSD 刺激分类和 ABIDE、COBRE 两个静息态疾病诊断任务上，CoRTeX 与强基线取得有竞争力的表现，同时支持对于单元可交换模型并不明确定义的区域级分析：学习到的各区域时间尺度呈现可解释空间组织，类别特异区域归因与类别选择性皮层对应。代码已提供。",
+    "relevance": "论文事实：显式为不同 ROI 学习积分窗、记忆学习率与遗忘率，并检验类别选择性归因。研究推断：可在 ROI motif 分析中增加时序维度，检验 Animal／Vehicle 的激活—抑制组合是否依赖不同积分尺度。",
+    "limitation": "区域级参数的可解释性不自动等同神经机制；NSD 刺激分类和临床任务不证明开放内容解码，需核查时间建模是否依赖真实连续记录及严格的独立验证。",
+    "review": "https://openreview.net/forum?id=TIdiRMJ2QV"
+  },
+  {
+    "id": "neurips-2026-153166",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "BrainVista: Modeling Naturalistic Brain Dynamics as Multimodal Next-Token Prediction",
+    "authors": "Xuanhua Yin, Ted Zhao, Lina Yao, Weidong Cai",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/153166",
+    "tags": [
+      "fMRI",
+      "自然电影",
+      "自回归预测",
+      "多模态条件"
+    ],
+    "introZh": "结合历史脑状态与按预测时刻对齐的刺激 token，进行无未来真实脑状态泄漏的条件预测。",
+    "abstractZh": "自然情境 fMRI 为连续多模态体验中的皮层动力学提供了具有时间分辨率的窗口；未来脑状态同时受内源神经上下文与外源感觉驱动支配。然而，预测这些动力学仍具有挑战：快速变化的刺激流必须与迟缓的血流动力学 BOLD 响应协调，同时皮层活动又组织在功能异质的脑网络中。为解决这些挑战，我们提出 BrainVista，一种用于已观测刺激条件下脑状态预测的多模态自回归框架。BrainVista 根据脑活动历史以及与各预测查询时间对齐的刺激 token，预测未来 fMRI 状态，从而无需访问未来真实 fMRI 状态便能执行自回归预测。该设计支持现实感觉刺激下具有因果时间顺序和时间一致性的自然脑动力学建模。具体而言，我们设计网络级 tokenizer 来构造具有功能结构的脑表征，用 Spatial Mixer Head 精化跨网络交互，并以 Stimulus-to-Brain 掩码保留时间上因果的刺激—脑条件关系，同时防止未来脑状态泄漏和刺激前瞻。我们在 Algonauts 2025、CineBrain 和 HAD 三个大型自然 fMRI 基准上评估长时程条件自回归预测。BrainVista 持续优于基线；在 Algonauts 2025 和 CineBrain 上，相较最强基线的模式相关分别相对提高 10.8% 和 9.4%。",
+    "relevance": "论文事实：通过刺激—脑掩码控制未来状态泄漏，在三个自然情境数据集上做长时程条件预测。研究推断：你的统一模型可把静态重建与动力学分支分开，并用冻结生成轨迹检验刺激删除后的预测响应传播。",
+    "limitation": "模型以已观测刺激为条件，不是没有未来刺激的自主脑世界模型；时间因果掩码也不等同神经科学因果发现。需区分 teacher forcing、滚动预测与不同预测跨度的误差累积。",
+    "review": "https://openreview.net/forum?id=NNRWeXb2aF"
+  },
+  {
+    "id": "neurips-2026-155412",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "BrainWorld: A Structural-Prior-Conditioned Generative Model for Whole-Brain 4D fMRI Dynamics",
+    "authors": "Junfeng Xia, Wenhao Ye, Junxiang Zhang, Xuanye Pan, Mo WANG, Quanying Liu",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/155412",
+    "tags": [
+      "fMRI",
+      "结构先验",
+      "四维生成",
+      "跨数据集"
+    ],
+    "introZh": "将结构 MRI 作为个体解剖先验注入去噪过程，生成长时程全脑 fMRI 轨迹。",
+    "abstractZh": "全脑四维 fMRI 生成对建模功能脑动力学具有价值，但现有 fMRI 基础模型主要面向表征学习和下游预测，而非条件预测式生成。我们提出 BrainWorld，一种以结构先验为条件的全脑四维 fMRI 动力学生成模型。BrainWorld 使用结构 MRI 作为被试级解剖上下文，引导未来 fMRI 生成；结构信息被整合进去噪过程，而不是作为平行模态处理。在覆盖不同队列和脑状态的 22 个数据集上评估时，BrainWorld 能生成长达 400 帧的稳定四维 fMRI 轨迹，通过生成样本增强改善下游表现，并学得优于基线的可迁移多模态表征。这些结果确立了一个具有条件感知能力、用于长时程脑动力学建模和多模态表征学习的生成框架。",
+    "relevance": "论文事实：结构 MRI 作为个体解剖上下文进入去噪过程，测试覆盖 22 个数据集，报告最长 400 帧轨迹。研究推断：共享功能潜变量之外可加入结构条件分支，区分个体解剖差异与刺激语义变化的作用。",
+    "limitation": "稳定生成与下游增强不证明轨迹的生理或因果真实性；需检查生成器是否记忆个体、是否真正跨队列迁移，以及结构先验和时序模型各自的贡献。",
+    "review": "https://openreview.net/forum?id=5rS8m8pxgo"
+  },
+  {
+    "id": "neurips-2026-153906",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "A Hierarchical Tokenization Framework for Voxel-Level fMRI Representation Learning",
+    "authors": "Karan Singh, Yue Zhao, Mohammadhassan Abbasi, Ehsan Adeli",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/153906",
+    "tags": [
+      "fMRI",
+      "体素表征",
+      "层级token化",
+      "功能图谱"
+    ],
+    "introZh": "在体素组、脑区和功能网络三层结构中压缩静息态 fMRI，并比较固定、学习与软先验层级。",
+    "abstractZh": "我们提出 HBAR（Hierarchical Brain Activity Representation），一种用于学习紧凑、多尺度神经影像表征的层级 token 化框架。HBAR 将体素级静息态 fMRI 组织为跨越分区内体素组、脑区分区与大尺度功能网络的层级结构，实现约 415 倍压缩，同时保留超出传统分区方法的精细空间信息。该框架支持固定图谱、完全学习和软先验引导的层级，使我们能够系统研究结构先验在脑表征学习中的作用。在大规模 fMRI 数据上评估时，HBAR 相较分区方法和单尺度 token 化基线显著改善重建，并支持脑动力学建模及性别分类等人口学预测下游任务。在重建与下游评估中，图谱引导层级具有最强的总体表现，提示既有功能图谱编码了仅凭重建仍难以恢复的组织结构。通过结合体素级保真度、紧凑离散 token 和多尺度脑结构，HBAR 为高维神经影像表征学习提供了一个实用框架。",
+    "relevance": "论文事实：比较图谱固定、完全学习与软先验引导三种层级，并兼顾体素保真与压缩。研究推断：统一模型可用多尺度 token 同时服务 ROI 级缺失恢复与顶点级反事实响应评价。",
+    "limitation": "下游主要是信号重建、动力学和人口学任务；高压缩率不保证保留支持正确语义解码的信息，需增加刺激检索、类别细节和未见被试测试。",
+    "review": "https://openreview.net/forum?id=Hpd9Zg6RQs"
+  },
+  {
+    "id": "neurips-2026-139564",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "AVID: A 5T fMRI Dataset for Benchmarking Auditory-induced Visual Mental Imagery Decoding",
+    "authors": "Shiqi Shen, Shurui Li, Yuanning Li, Xilin Zhang",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/139564",
+    "tags": [
+      "fMRI",
+      "视觉想象",
+      "数据集",
+      "听觉提示"
+    ],
+    "introZh": "67 小时、九名参与者的 5T fMRI 视觉想象资源，用听觉描述降低视觉提示污染。",
+    "abstractZh": "视觉心理意象（VMI）解码利用脑活动重建内部生成的视觉场景，为外化内部体验和发展神经假体交流接口提供潜在路径。然而，该领域的发展受到缺少专门、足以支持训练规模的 VMI 数据集的限制。当前 VMI 范式往往依赖视觉提示或短时记忆图像，引入视觉与记忆混杂，难以区分内源图像构建所对应的神经活动与先前或同期视觉输入驱动的信号。此外，现有 VMI 数据集对个别视觉属性的描述控制有限，难以系统评价精细视觉细节。为填补这些空缺，我们提出 AVID，首个专门用于听觉诱导 VMI 解码、达到训练规模的 5.0T 功能磁共振成像资源。我们进一步围绕 AVID 定义固定划分、预定义神经输入与标准化评价协议的基准。AVID 采用高场 5T fMRI 采集，包含九名参与者约 67 小时密集记录。数据集具有两个互补划分：使用自然中文描述的场景级复杂划分，以及明确规定视觉属性的受控简单划分。我们进一步制定标准化评价协议，将源图像一致性与语义对齐分离，以更细致地评估意象重建。基线的定性和定量结果表明，当前重建流程在 AVID 上仍受明显限制，但较成功的重建能够保留口头描述中可辨认的场景级语义。通过结合专门的训练规模神经记录和标准化评价资源，AVID 为想象特异模型开发提供数据基础，也为大幅减少感觉污染的 VMI 解码提供基准。",
+    "relevance": "论文事实：听觉描述提示、受控属性与自然场景两个划分，以及分开评价图像一致性和语义匹配。研究推断：可用来验证模型恢复的是听觉描述、一般语义还是内部视觉属性，并在相同语义下改变清晰度、身份或布局。",
+    "limitation": "听觉提示降低视觉输入污染，却引入语言和听觉语义混杂；想象内容没有唯一可观察真值，不能把与源图像不一致直接视为解码错误。",
+    "review": "https://openreview.net/forum?id=IIKVWwmtSM"
+  },
+  {
+    "id": "neurips-2026-154514",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "MindVLM: Neural-Grounded Visual Captioning via Subject-Aware Semantic Evidence Selection",
+    "authors": "Zixiang Yin, Yu-Ping Wang, Zhengming Ding",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/154514",
+    "tags": [
+      "fMRI",
+      "视觉语言模型",
+      "图像描述",
+      "个体语义"
+    ],
+    "introZh": "由 fMRI 选择测试图像中的视觉证据，再交由冻结 VLM 生成描述；推理需要图像。",
+    "abstractZh": "将视觉脑活动翻译为自然语言，为理解人类认知与神经语义表征提供了有力窗口。以往多数脑图像描述方法依赖配对监督，把 fMRI 信号投影到语言空间。然而，广泛使用的 Natural Scenes Dataset（NSD）仅基于图像—fMRI 配对构建，现有方法却把 MS-COCO 描述作为间接文本监督。关键问题是，在 fMRI 采集期间，参与者只观察裁剪后的图像区域，而关联的 MS-COCO 描述却对应完整场景。这个不匹配在神经表征与文本监督之间造成根本差距，给基于 NSD 的脑图像描述引入固有的语义损失。为缓解这一问题，我们将脑图像描述重新定义为神经落地的视觉描述，使语言直接根据视觉落地的神经证据生成，而非依赖文本监督。我们提出 MindVLM，把 fMRI 映射到具有被试感知能力的视觉 token，并利用冻结视觉语言模型（VLM）产生可解释、个性化描述。MindVLM 不采用逐点回归，而重点提取脑活动中语义相关的视觉线索，自然适应部分可观察性与个体差异。NSD 上的大量实验表明，在 LLaVA-v1.5、Qwen2.5-VL 和 Gemma3 等多个 VLM 主干上，MindVLM 持续改善描述质量，且超过模型内在先验。尽管训练既不需要文本监督也不需要 LLM，并采用与传统描述方法不同的图像落地推理范式，MindVLM 仍与监督方法具有竞争力，提示被试特异神经落地为忠实脑到语言生成提供了高效、可扩展、可解释的路径。",
+    "relevance": "论文事实：使用 fMRI 对齐被试感知视觉 token，并以冻结 VLM 生成描述；其设定是图像落地推理。研究推断：可把它视为脑信号引导证据选择的框架，用零脑、错配脑和仅图像条件量化神经证据对描述的净贡献。",
+    "limitation": "推理仍需输入测试图像，不能当作纯 fMRI→文本。图像、VLM 和脑信号各自贡献需分离；描述流畅也不等于逐项语义均来自神经测量。",
+    "review": "https://openreview.net/forum?id=D1By8Wvrqy"
+  },
+  {
+    "id": "neurips-2026-155505",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "Brain-OF: An Omnifunctional Foundation Model for fMRI, EEG and MEG",
+    "authors": "Hanning Guo, Hanwen Bi, Farah Abdellatif, Andrei Galbenus, N. J Shah, Abigail Morrison, Jürgen Dammers",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/155505",
+    "tags": [
+      "fMRI",
+      "EEG",
+      "MEG",
+      "统一基础模型",
+      "共享与特异表征"
+    ],
+    "introZh": "联合预训练 fMRI、EEG、MEG，以共享和路由专家处理跨模态共性与模态特异语义。",
+    "abstractZh": "脑基础模型在广泛神经科学任务中取得显著进展。然而，多数现有模型局限于单一功能模态，限制了对不同神经影像技术互补时空动力学及汇总数据规模的利用。这一局限主要来自模态之间严重的语义异质性和分辨率差异。为解决这些问题，我们提出 Brain-OF，一种在 fMRI、EEG 和 MEG 上联合预训练的全功能脑基础模型，能够在统一框架中处理单模态和多模态输入。为协调异质时空分辨率，我们引入任意分辨率神经信号采样器，把多样脑信号投影到共享语义空间。为进一步处理语义偏移，Brain-OF 主干整合 DINT 注意力与稀疏混合专家：共享专家捕捉模态不变表征，路由专家专注于模态特异语义。此外，为通过自监督学习显式内化神经活动特性，我们提出掩码时间—频率建模，一种同时在时间和频率两个域重建脑信号的双域预训练目标。Brain-OF 在约 40 个数据集构成的大规模语料上预训练，在多样下游任务中展示优越表现，凸显联合多模态整合与双域预训练的益处。作者表示代码将在接收后公开。",
+    "relevance": "论文事实：联合 fMRI、EEG、MEG，使用共享／路由专家和时频双域重建。研究推断：它与共享语义、模态私有变量和任意模态子集的统一模型直接相关，可进一步比较缺失模态恢复是否保留支持正确语义解码的关键信息。",
+    "limitation": "多模态联合训练不自动证明配对语义可交换或缺失模态能恢复；摘要没有给出内容解码、跨被试和缺失模态的具体指标，需审计各数据集来源与任务组成。",
+    "review": "https://openreview.net/forum?id=54rAPNnSej"
+  },
+  {
+    "id": "neurips-2026-153546",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "Fine-tuning language encoding models on slow fMRI improves prediction for fast ECoG",
+    "authors": "Aditya Vaidya, Richard Antonello, Alexander Huth",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/153546",
+    "tags": [
+      "fMRI",
+      "ECoG",
+      "语言编码",
+      "跨模态迁移"
+    ],
+    "introZh": "在低时间分辨率 fMRI 上微调的语言表征，也能改善高时间分辨率 ECoG 的编码预测。",
+    "abstractZh": "神经科学家近年来转向皮层脑电图（ECoG）等颅内脑记录方法开展人体实验，因为这些方法具有精细的时空分辨率。然而，基于这类数据训练的模型，根本上受到能够接受必要植入记录装置的患者群体规模限制。我们提出利用非侵入式 fMRI 弥补训练数据缺口。使用在 fMRI 上微调的口语语言表征，我们构建 ECoG 编码模型。尽管 fMRI 时间分辨率差了两个数量级，这些表征仍改善了 ECoG 的预测性能，且预测改善出现在远超 fMRI 直接测量范围的频带中。接着，为测试该流程的泛化能力，我们用时间上进一步下采样两倍的 fMRI 响应微调模型。尽管分辨率损失，这些模型仍以与原始 fMRI 微调模型相当的水平预测 fMRI 和 ECoG 响应。最后，我们表明，ECoG 性能随着 fMRI 微调数据量增加而稳定提升。结果显示，fMRI 这样的“慢”数据可以成为构建更好“快”脑数据模型的宝贵资源。未来，整合多种记录方法或可进一步改善解码等其他应用。",
+    "relevance": "论文事实：fMRI 微调语言表征改善 ECoG 编码，额外下采样和数据规模实验支持跨时间分辨率迁移。研究推断：统一模型不必先把所有模态插值到同一采样率，可以先共享语义结构，再保留各模态时间分支。",
+    "limitation": "这是语言表征到 ECoG 的前向编码改善，不是 fMRI→ECoG 原始波形转换，也未直接证明脑到文本生成收益；患者与健康队列差异仍需控制。",
+    "review": "https://openreview.net/forum?id=KZUkyYypaw"
+  },
+  {
+    "id": "neurips-2026-154809",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "LEAF: Language-EEG Aligned Foundation Model for Brain-Computer Interfaces",
+    "authors": "Muyun Jiang, Shuailei Zhang, Zhenjie Yang, Wu Mengjun, Wei Zhang, Weibang Jiang, Chenyu Liu, Zhiwei Guo, Rui Liu, Shangen Zhang, Yong Li, Yi Ding, Cuntai Guan",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/154809",
+    "tags": [
+      "EEG",
+      "语言对齐",
+      "基础模型",
+      "任务指令"
+    ],
+    "introZh": "在时频重建预训练之后，以任务指令和可学习查询把 EEG 对齐到文本标签语义空间。",
+    "abstractZh": "EEG 基础模型为脑机接口学习可迁移表征，但现有方法把任务和标签视为离散目标，没有利用自然语言任务指令的语义结构引导表征学习。我们提出 LEAF，一种通过语义任务指令与查询实现 EEG—语言对齐的基础模型。LEAF 整合任务感知语义引导，产生具有结构并与语言对齐的 EEG 嵌入，从而增强解码稳健性与迁移能力。在 EEG 预训练阶段，我们引入联合频谱—时间重建（STR）框架，捕捉 EEG 频谱节律与时间动力学之间的耦合。STR 通过随机频谱扰动增强频率稳健性，并使用两个互补时间目标学习上下文与序列结构。在 EEG—语言对齐阶段，我们提出指令条件 Q-Former（IQF）。这一基于查询的交叉注意力 Transformer，把指令嵌入注入 EEG token，再通过可学习查询与文本标签嵌入实现语义对齐。我们在 16 个下游数据集上评估 LEAF，涵盖运动想象、情绪识别、稳态视觉诱发电位、隐语和医疗任务。LEAF 在其中 12 个数据集上达到最先进性能，并在五类任务中均取得最佳平均结果。重要的是，作者的分析首次揭示，显式任务指令作为语义先验，引导 EEG 嵌入进入连贯且具有语言落地的空间。代码已提供。",
+    "relevance": "论文事实：时频预训练结合指令条件 Q-Former，实现跨 16 数据集的标签语义对齐。研究推断：可将任务指令作为共享脑—语言模型的条件变量，但需与刺激语义、被试身份分别建模。",
+    "limitation": "标签语义对齐不等于开放词汇脑到文本生成；多任务分类成绩也不证明任意模态恢复。应核对隐语任务及未见任务、未见被试上的真实迁移幅度。",
+    "review": "https://openreview.net/forum?id=Ao4vGWr7BX"
+  },
+  {
+    "id": "neurips-2026-150909",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "B",
+    "title": "Mechanistic Interpretability of EEG Foundation Models via Sparse Autoencoders",
+    "authors": "William Lehn-Schiøler, Magnus R Kjaer, Rahul Thapa, Magnus G Pedersen, Anton M Storgaard, Nick Williams, Andreas Brink-Kjaer, Tue Lehn-schiøler, Sadasivan Puthusserypady, James Zou, Lars Kai Hansen",
+    "source": "NeurIPS 2026 主会 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/150909",
+    "tags": [
+      "EEG",
+      "基础模型",
+      "稀疏自编码器",
+      "概念干预",
+      "可解释性"
+    ],
+    "introZh": "用稀疏自编码器和目标／非目标干预审计 EEG 基础模型，区分可选择操控与纠缠表征。",
+    "abstractZh": "EEG 基础模型在临床任务上取得最先进性能，但驱动预测的内部计算仍不透明，成为临床信任的障碍。我们在 SleepFM、REVE 和 LaBraM 三种架构不同的 EEG Transformer 上应用 TopK 稀疏自编码器（SAE），从嵌入中提取稀疏特征字典。通过将特征落地到异常、年龄、性别和用药等临床分类体系，我们跨架构比较单语义性与纠缠。一套由字典内部健康审计驱动的超参数程序，能够稳健迁移到全部三个架构。通过概念操控，我们提出“目标相对非目标”的探针面积指标，量化操控选择性，并揭示三个操作区间：可选择操控、已编码但纠缠、以及未编码。该框架暴露了关键表征失败，包括导致模型总体性能崩溃的“破坏球”式干预，以及年龄—病理混杂等临床纠缠，即无法在不破坏另一个概念的情况下抑制某概念。最后，频谱解码器把这些干预映射回幅度谱，将潜在操控转换为具有生理可解释性的频率特征，例如病理慢波抑制与 alpha 频段恢复。",
+    "relevance": "论文事实：比较三种基础模型，并显式量化目标操控与非目标损伤，而非只报告概念可读取性。研究推断：反事实脑模型可沿用目标效应与非目标保真双评价，检查 ROI 或语义方向干预是否只是整体破坏模型。",
+    "limitation": "主要证据来自临床 EEG 表征，故列为 B 级方法连接；潜变量操控是模型内干预，不等同真实脑因果机制，频谱可解释性也不自动证明生理真实性。",
+    "review": "https://openreview.net/forum?id=eWfHTYapcq"
+  },
+  {
+    "id": "neurips-2026-139123",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "Cephalonauts One: A deep fMRI dataset for decoding naturalistic speech in the human brain",
+    "authors": "Antoine Collas, Louis Jalouzot, Géraud Ilinca, Corentin Caris, Romain Valabregue, Ahmed Hassayoune, David Gonçalves, Madeleine Hueber, Thaddée Delebarre, Savatovsky Julien, Clara Fonteneau, Charles Maussion, Bertrand Thirion, Alexis Thual",
+    "source": "NeurIPS 2026 已录用 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/139123",
+    "tags": [
+      "fMRI",
+      "自然语音",
+      "数据集",
+      "跨session检索"
+    ],
+    "introZh": "三名参与者的深度自然语音 fMRI 资源，配套音频、转录与留出 session 的片段检索基准。",
+    "abstractZh": "Cephalonauts One 是一个全脑 3T 功能磁共振成像（fMRI）数据集，在被试听音频播客时采集。三名健康被试接受多次扫描，每次 session 包含五个 15 分钟 run，期间收听母语播客。当前版本为每名被试分别提供 14、20 和 17 小时 fMRI 数据，使它成为可用自然语音刺激数据集中单被试记录最深入的资源之一。该数据集把脑活动与对应播客音频、转录标注以及派生刺激嵌入配对。此外，我们提出一个以音频片段检索表述的脑解码基准：给定来自留出 session 的 fMRI 活动，解码器必须从候选片段中识别对应的时间对齐播客音频片段。我们为此任务提供标准化划分、评价指标和基线解码器。最后，规模分析表明，解码性能随着每名被试训练数据量增加而持续改善。数据与代码已公开。",
+    "relevance": "论文事实：三名参与者各有 14、20、17 小时记录，提供留出 session 的自然音频片段检索协议。研究推断：可作为脑—语言共享表示的深度个体数据基准，与更广但单人记录更少的数据对照，分开研究数据深度和被试广度的收益。",
+    "limitation": "当前正式会议摘要对应的发布版本合计 51 小时，不能混用其他预印本后续扩充规模。只有三名参与者；候选片段检索不同于开放文本或音频生成，也不直接证明跨语言、跨播客、跨被试泛化。",
+    "review": "https://openreview.net/forum?id=jqqDfxmqO5"
+  },
+  {
+    "id": "neurips-2026-155233",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "BRIDGE: Brain-Vision Representation Integration through Depth and Granularity Encoding",
+    "authors": "Chenyuan Hong, Binghao Ye, Yufei Guo, Guoqi Li",
+    "source": "NeurIPS 2026 已录用 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/155233",
+    "tags": [
+      "EEG",
+      "MEG",
+      "视觉解码",
+      "CLIP对齐",
+      "条件生成"
+    ],
+    "introZh": "将 CLIP 多深度视觉特征与 EEG／MEG 的有序时间阶段对齐，兼顾早期感知和晚期语义。",
+    "abstractZh": "从非侵入式脑信号解码视觉内容仍然具有挑战，因为神经响应随时间演化，而图像通常是静态的。多数现有方法把整个神经响应窗口对齐到单一最终视觉嵌入，忽略了根本的表征不匹配：脑信号同时反映早期感知和晚期整合表征，而最终视觉嵌入偏向高层语义。因此，我们提出 BRIDGE，一种通过视觉深度编码和脑信号粒度编码对齐两种模态的脑—视觉表征整合框架。在视觉侧，BRIDGE 提取并融合 CLIP 不同深度的表征，产生保留低层和高层信息的对齐目标。在脑信号侧，BRIDGE 不把整个时间窗视为同质、从而掩盖时间异质性，而是显式把刺激诱发的 EEG／MEG 响应划分为少量按时间排序的阶段，再自适应池化。所得脑和视觉嵌入通过对比学习在共享潜空间内训练，并可通过预训练扩散先验进一步支持脑到图像生成。在 THINGS-EEG 和 THINGS-MEG 上的实验表明，BRIDGE 取得较强的检索与生成表现。消融研究进一步确认，按深度聚合视觉特征和按时间分解脑信号具有互补收益。",
+    "relevance": "论文事实：联合视觉模型深度和神经响应时间阶段建立对比对齐，并用于检索和生成。研究推断：可在 fMRI–EEG 统一模型中，把 EEG 多阶段 token 与 fMRI 的空间 ROI token 分别连接到多层 CLIP 表征，避免过早压缩成单一高层语义向量。",
+    "limitation": "验证限于 THINGS-EEG／MEG，未包含 fMRI 联合训练；模型层次与时间阶段的对应关系不是直接的皮层机制证明。应核对未见类别、留一被试、训练与测试刺激以及扩散先验控制。",
+    "review": "https://openreview.net/forum?id=7GEZxlwjaN"
+  },
+  {
+    "id": "neurips-2026-148190",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "B[FM]²: Brain Foundation Model via Flow Matching with SplitUNet",
+    "authors": "Jaedong Hwang, Kathleen Zhang, David Dai, Konstantinos Kontras, Maarten De Vos, Ila Fiete, Paul Liang",
+    "source": "NeurIPS 2026 已录用 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/148190",
+    "tags": [
+      "EEG",
+      "基础模型",
+      "流匹配",
+      "连续信号建模"
+    ],
+    "introZh": "绕过 patch 和离散 token，以连续时间流匹配直接预训练原始 EEG，并分别建模时间与电极轴。",
+    "abstractZh": "EEG 基础模型能够从大规模 EEG 语料学习可泛化表征，使单一主干迁移到不同临床和脑机接口任务。现有模型通常将连续多通道 EEG 波形离散化为 patch 或码本 token，再以掩码自监督训练 Transformer。认识到这种离散化会割裂连续脑节律、掩盖精细时间动力学，我们提出 B[FM]²，即通过流匹配构建的脑基础模型。该模型放弃离散化，使用连续时间流匹配直接在原始信号上预训练，不采用 patch、token 化或掩码。然而，多通道 EEG 给流匹配带来架构挑战：时间轴采样密集且高度自相关，包含数千时间点；电极轴则很短，只有分布于不同头皮位置的数十通道。为解决时间—电极不对称性，我们提出速度网络 SplitUNet，把每个模块分解为独立的一维时间卷积和一维电极卷积，并只沿时间降采样，在整个层级中保留电极拓扑。B[FM]² 在九项标准 EEG 下游分类任务中的七项取得最先进表现，预训练仅使用 36,895 个片段，约 307 小时，相当于现有 EEG 基础模型所需预算的约 3.3%。它还生成两名具备专科认证的神经科医生无法与真实 EEG 区分的合成 EEG，Cohen's κ 为 −0.096。",
+    "relevance": "论文事实：原始信号流匹配与时间／电极分解架构，在较小预训练预算下支持多任务迁移与 EEG 生成。研究推断：统一编解码模型可比较连续潜变量生成和离散 token 重建对节律、语义信息及缺失区域恢复的影响。",
+    "limitation": "主要证据来自分类与波形生成，尚未证明开放视觉／语言解码。两位医生的真伪判断及负 κ 不能独立证明生理真实性或下游有效性；预训练预算比例需结合各基线的数据与训练设置理解。",
+    "review": "https://openreview.net/forum?id=zdfQqwhwe7"
+  },
+  {
+    "id": "neurips-2026-149502",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "MENDR: Manifold-Embedded Neural Data Representations for Channel-Agnostic EEG Foundation Modeling",
+    "authors": "Micky C Nnamdi, Matthew Chen, Benoit Marteau, Shaun Q. Y. Tan, J. Ben Tamo, May Dongmei Wang",
+    "source": "NeurIPS 2026 已录用 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/149502",
+    "tags": [
+      "EEG",
+      "基础模型",
+      "黎曼几何",
+      "跨电极配置"
+    ],
+    "introZh": "把 EEG 空间协方差的 Log-Euclidean 几何直接写入模型，支持不同通道数量之间的表征迁移。",
+    "abstractZh": "EEG 基础模型在学习可迁移表征方面展示了潜力，但现有方法把 EEG 作为通用时间序列，忽视了神经信号分析中至关重要的空间协方差结构的黎曼几何。我们提出 MENDR（Manifold-Embedded Neural Data Representations），首个通过矩阵对数与 Log-Euclidean 切空间，把这种几何直接嵌入架构而非仅从数据学习的 EEG 基础模型。MENDR 使用可微矩阵对数，将窗口协方差矩阵嵌入 Log-Euclidean 切空间，使标准 Transformer 操作在几何上等价于黎曼操作。基于 Perceiver 式交叉注意力的通道无关空间投影，使模型能在 6 到 64 通道的电极配置之间无缝迁移。MENDR 使用切空间中的掩码自编码目标，在 Temple University Hospital EEG Corpus 的超过 4,000 小时、14,987 名被试数据上预训练。它仅用 120 万参数，便在六项下游基准中的三项——TUAB 异常、TUEV 事件和 CHB-MIT 癫痫——取得最先进结果，参数量比竞争基础模型最多减少 42 倍。",
+    "relevance": "论文事实：窗口协方差经可微矩阵对数映射到切空间，空间投影支持 6–64 通道。研究推断：可作为缺失电极或不同 montage 下的 EEG 分支候选，与保留原始时序的分支互补，再与 fMRI 空间表征对齐。",
+    "limitation": "协方差压缩可能丢失相位、精细时序和刺激瞬态信息；临床基准表现不直接说明脑到图像／文本解码能力。不同通道数的适用性也不等于任意电极位置、参考方式或未知数据集无损迁移。",
+    "review": "https://openreview.net/forum?id=pf1CbF5JeQ"
+  },
+  {
+    "id": "neurips-2026-150770",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "B",
+    "title": "What do EEG Foundation Models Capture from Human Brain Signals?",
+    "authors": "Ling Tang, Qian Chen, Jilin Mei, Houshi Xu, Quanshi Zhang, Jing Shao, Na Zou, Xia Hu, Dongrui Liu",
+    "source": "NeurIPS 2026 已录用 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/150770",
+    "tags": [
+      "EEG",
+      "基础模型",
+      "表征审计",
+      "特征擦除",
+      "机制解释"
+    ],
+    "introZh": "区分 EEG 基础模型学到了什么、实际使用什么，以及其优势有多少能由传统可解释特征解释。",
+    "abstractZh": "临床 EEG 分析依赖经过数十年完善的人工特征目录，例如频带功率、连接性、复杂度等。现代 EEG 基础模型绕过这个目录，通过自监督预训练直接从原始信号学习，并在多数临床基准上达到或超过特征工程基线。两种表征是否一致仍是开放问题，我们把它分解为三个子问题：模型学到了什么、模型使用了什么，以及有多少能够被解释。我们通过逐层岭回归探针、LEACE 式交叉协方差子空间擦除，以及与随机特征基线比较的透明分类器来回答这些问题。审计覆盖 CSBrain、CBraMod、LaBraM 三种基础模型，MDD、Stress、ISRUC-Sleep、TUSL、Siena 五项临床任务，以及六类 63 项特征词典。在 945 个模型—任务—特征单元中，648 个（68.6%）被归为表征因果，199 个（21.1%）仅被编码。跨任务共有 50 项特征被列为通用候选，它们在至少两项任务中获得全部三种架构的强支持。频域特征占主导，但其余五类也各自贡献了实质性的因果份额。已确认特征平均恢复了基础模型相对随机基线优势的 79.3%，且呈清晰任务梯度：MDD 约为 0.99，Stress 约为 0.56。接近性能上限的任务几乎可完全由词典恢复，而较难任务留下了不可忽略的残余，为未来概念发现指出具体目标。",
+    "relevance": "论文事实：以可读取性、特征擦除效应和性能优势恢复三个层次审计基础模型，而不把相关探针直接视为模型使用证据。研究推断：可给 fMRI↔CLIP 模型增加类似分层审计，检验 ROI 类别轴是仅可读取、实际驱动输出，还是能够解释模型性能增益。",
+    "limitation": "作者的“表征因果”限定于模型表征擦除干预，不是真实脑组织的生物因果关系；临床词典也可能漏掉语义或任务特异结构。证据主要来自临床任务，因此列为 B 级方法连接。",
+    "review": "https://openreview.net/forum?id=fUj6SZpI7V"
+  },
+  {
+    "id": "neurips-2026-152015",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "FlatClip: Reusing Image Foundation Models for fMRI Representation Learning via Cortical Flatmaps",
+    "authors": "Mo WANG, Wenhao Ye, Zihan Ning, Jiayu Zuo, Junfeng Xia, Hongkai Wen, Quanying Liu",
+    "source": "NeurIPS 2026 已录用 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/152015",
+    "tags": [
+      "fMRI",
+      "皮层平展图",
+      "视觉基础模型",
+      "几何先验"
+    ],
+    "introZh": "将皮层活动绘制成保留几何结构的平展图序列，用冻结 SigLIP2 建立无需 fMRI 预训练的空间表征基线。",
+    "abstractZh": "近期 fMRI 基础模型在表征脑活动的空间尺度上存在显著差异。基于 ROI 和连接性的模型高效但粗糙，体素级模型保留精细空间结构，却需要专门架构和昂贵的 fMRI 特异预训练。我们研究，这种性能差距是否部分反映保留皮层几何的重要性。受宏观脑活动受到脑几何强约束这一证据启发，我们提出 FlatClip，一个无需训练的表面级基线：它将皮层活动渲染成具有几何感知能力的平展图序列，复用冻结 SigLIP2 图像编码器，并只配合轻量下游探针。由于 FlatClip 未在 fMRI 上预训练，它提供了一个域外参照，用于评估不依赖 fMRI 特异预训练数据时，可从皮层几何中恢复多少信息。在静息态和视觉 fMRI 基准上，FlatClip 优于 ROI／功能连接风格的控制及多个通用 fMRI 基础基线，而体素级模型仍构成较强的上层比较。几何控制实验表明，破坏皮层拓扑会降低性能；把 ROI 级信号重新映射回图谱定义的四维体积能够部分恢复性能，但仍低于完整体素输入。这些结果将皮层几何确立为 fMRI 表征学习的重要因素，并使表面级平展图序列成为 ROI 与体素模型之间实用的中间层基线。",
+    "relevance": "论文事实：使用冻结 SigLIP2 编码皮层平展图，不进行 fMRI 特异预训练，并用拓扑破坏和 ROI 回填控制分析几何贡献。研究推断：你的 fsaverage5 视觉皮层表征可加入冻结图像编码器基线，区分空间布局、预训练视觉先验与脑数据学习各自带来的收益。",
+    "limitation": "“无需训练”针对特征提取，仍使用下游探针。图像预训练先验并不等于脑语义表征；平展变形、渲染方式和皮层覆盖范围可能影响结论，也未自动验证脑到内容生成。",
+    "review": "https://openreview.net/forum?id=W9QQrE5T3h"
+  },
+  {
+    "id": "neurips-2026-151712",
+    "conference": "NeurIPS",
+    "year": 2026,
+    "level": "A",
+    "title": "Learning Sparse Semantic-Cortical Atoms for Multisubject Naturalistic fMRI Encoding",
+    "authors": "Alicia Zeng",
+    "source": "NeurIPS 2026 已录用 Poster · 官方会议页面",
+    "href": "https://neurips.cc/virtual/2026/poster/151712",
+    "tags": [
+      "fMRI",
+      "语义编码",
+      "稀疏自编码器",
+      "跨被试",
+      "皮层语义原子"
+    ],
+    "introZh": "联合重建语言特征与预测多被试脑响应，将语义选择性、皮层组织和被试对应显式连接到稀疏原子。",
+    "abstractZh": "基于大型语言模型特征的自然语言编码模型能够较好预测皮层响应，但其学习到的表征仍难解释。三个挑战尤其关键：在高维、相关特征空间中，语义选择性根本上不可辨识；皮层组织仍隐含在逐体素权重图内；跨被试结构通常只在模型拟合后处理。我们提出一个多被试耦合稀疏自编码器，联合重建语言模型特征并预测被试特异脑响应，学习语义—皮层原子的稀疏基，使语义结构、皮层组织与跨被试对应在单一模型中显式呈现。在自然故事聆听 fMRI 上，模型使用 50 个原子、每个 TR 仅激活五个原子，仍保留匹配的稠密特征岭回归模型 88% 的脑预测性能。相较匹配的两阶段基线，联合训练在预测与可解释性之间取得最强的总体权衡。学习到的原子语义连贯且可解释，相较标准事后编码模型分析，恢复出更可复现的跨被试脑图谱，与 Yeo 7 和 Neurosynth 的大尺度皮层结构对齐，并在低数据条件下比岭回归更好迁移到留出被试。通过连接语义特征与多个被试的对应皮层响应模式，该框架为语义到脑编码的认知神经科学分析提供了更可解释的基底。",
+    "relevance": "论文事实：多被试联合稀疏模型用 50 个原子、每 TR 五个活动原子保留 88% 稠密岭回归预测性能，并评估低数据留出被试迁移。研究推断：可与类别反事实响应场结合，检验语义原子、ROI 激活—抑制 motif 和实际刺激删除效应是否一致。",
+    "limitation": "稀疏原子可解释并不消除相关特征空间的所有不辨识性；语义标签与图谱对齐不是因果机制证据。任务是故事聆听编码，不能直接外推到图像生成、想象解码或任意模态缺失恢复。",
+    "review": "https://openreview.net/forum?id=YcEZoSqrxa"
+  }
+];
